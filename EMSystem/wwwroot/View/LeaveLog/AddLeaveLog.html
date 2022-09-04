@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html>
+<html>
+    <body>
+        <div ng-controller="LeaveLogController">
+
+            <style>
+                #roundedcorner {
+                    margin: auto;
+                    border-radius: 25px;
+                    border: 2px solid #000000;
+                    padding: 20px;
+                    width: 450px;
+                    height: 1100px;
+                }
+
+
+                #footer {
+                    margin-top: 30px;
+                }
+                label {
+                    margin-left: 5px;
+                }
+                .form-control{
+                    margin-left:5px;
+                    width:300px;
+                }
+           
+                input:invalid {
+                    border: red solid 2px;
+                }
+            </style>
+
+            <br />
+            <br />
+
+            <form id="roundedcorner" name="addLeaveLogForm">
+
+                <div class="modal-header">
+                    <h4 class="modal-title" id="add-modal-label">Add new LeaveLog</h4>
+                </div>
+
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <label for="addStartDate">Start Date</label>
+                        <input type="datetime-local" class="form-control" id="addStartDate" name="StartDate" ng-model="StartDate" required>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="addEndDate">End Date</label>
+                        <input type="datetime-local" class="form-control" id="addEndDate" name="EndDate" ng-model="EndDate" required>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="addLeaveType">Leave Type</label>
+                        <select id="addLeaveType" class="form-control" name="LeaveType" ng-model="LeaveType" required>
+                            <option value="">-- Select leave type -- </option>
+                            <option value="Full Leave">Full Leave</option>
+                            <option value="Half Leave">Half Leave</option>
+                            <option value="Combined Leave">Combined Leave</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="addLeaveReason">Leave Reason</label>
+                        <textarea class="form-control" id="addLeaveReason" name="LeaveReason" placeholder="LeaveReason" ng-model="LeaveReason" rows="4" required>
+                        </textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="addRequestedBy">Requested By</label>
+                        <select id="addRequestedBy" class="form-control" name="addRequestedBy" ng-options="Employee.id as Employee.name for Employee in EmployeeList" ng-model="EmployeeID">
+                        </select>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="addLeaveStatus">Leave Status</label>
+                        <select id="addLeaveStatus" class="form-control" name="LeaveStatus" ng-model="LeaveStatus" required>
+                            <option value="">-- Select leave Status -- </option>
+                            <option value="Approved">Approved</option>
+                            <option value="Pending">Pending</option>
+                            <option value="Rejected">Rejected</option>
+                        </select>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="addApprovedBy">ApprovedBy</label>
+                        <input type="number" class="form-control" id="addApprovedBy" name="ApprovedBy" placeholder="ApprovedBy" ng-model="ApprovedBy" required>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="addApprovedDate">Approved Date</label>
+                        <input type="date" class="form-control" id="addApprovedDate" name="ApprovedDate" ng-model="ApprovedDate" required>
+
+                    </div>
+
+                    <div id="footer">
+                        <hr />
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="Close()">Close</button>
+                        <button type="submit" class="btn btn-primary" ng-click="Add()">Save Changes</button>
+                    </div>
+
+                </div>
+
+            </form>
+
+        </div>
+
+        <br />
+        <br />
+
+    </body>
+
+</html>
+
+

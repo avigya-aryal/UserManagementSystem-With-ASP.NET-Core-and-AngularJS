@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html>
+    <body>
+        <div ng-controller="EmployeeController">
+
+            <style>
+                #roundedcorner {
+                    margin: auto;
+                    border-radius: 25px;
+                    border: 2px solid #000000;
+                    padding: 20px;
+                    width: 450px;
+                    height: 550px;
+                }
+
+                #footer {
+                }
+                label {
+                    margin-left: 5px;
+                }
+               .form-control{
+                   margin-left:5px;
+                   width:300px;
+               }
+           
+                input:invalid {
+                    border: red solid 2px;
+                }
+            </style>
+
+            <br />
+            <br />
+
+            <form id="roundedcorner" name="addEmployeeForm" enctype="multipart/form-data">
+
+                <div class="modal-header">
+                    <h4 class="modal-title" id="add-modal-label">Add new Employee</h4>
+                </div>
+
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <label for="add-designation">Designation</label>
+                            <input type="text" id="add-designation" class="form-control" name="Designation" placeholder="Designation" ng-model="Designation" ng-pattern="validation" ng-minlength="1" ng-maxlength="50" required>
+                            <span class="alter alert-warning" ng-show="addEmployeeForm.$Designation || (addEmployeeForm.Designation.$dirty && addEmployeeForm.Designation.$invalid)">
+                                <span ng-show="addEmployeeForm.Designation.$error.pattern">Designation must be in [A-Za-A], 1-50 characters.</span>
+                            </span>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="add-status">
+                            Status:&nbsp;
+                            <input type="checkbox" ng-model="Status">&nbsp;Active
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="addEmployeeName">Employee Name</label>
+                            <select id="addEmployeeName" class="form-control" name="addEmployeeName" ng-model="ContactID" required>
+                                <option ng-repeat="Contact in ContactList" value={{Contact.id}}>{{Contact.name}}</option>
+                            </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="add-joinedDate">Joined Date</label>
+                            <input type="date" class="form-control" id="add-joinedDate" name="JoinedDate" placeholder="JoinedDate" ng-model="JoinedDate" required>
+                       
+                    </div>
+
+                    <div id="footer">
+                        <hr />
+                        <button type="button" class="btn btn-default" ng-click="Close()">Cancel</button>
+                        <button type="submit" class="btn btn-primary" ng-click="Add()">Save Changes</button>
+                    </div>
+
+                </div>
+
+            </form>
+        </div>
+    </body>
+</html>

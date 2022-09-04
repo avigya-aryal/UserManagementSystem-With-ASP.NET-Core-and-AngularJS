@@ -1,0 +1,68 @@
+﻿<div ng-controller="UserController">
+    <style>
+        #roundedcorner {
+            margin: auto;
+            border-radius: 25px;
+            border: 2px solid #000000;
+            padding: 20px;
+            width: 450px;
+            height: 450px;
+        }
+        label{
+            margin-left:5px;
+        }
+        .form-control{
+            margin-left:5px;
+            width:300px;
+        }
+
+        #updatebutton {
+        }
+    </style>
+    <div id="edit" aria-labelledby="edit" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" id="roundedcorner">
+                <form class="form-horizontal" id="edit-form" ng-submit="Update()">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="edit-modal-label">Update User</h4>
+                    </div>
+                    <div class="modal-body">
+                        <!--<div class="form-group">
+    <label for="edit-employeeID">Name</label>
+        <input type="text" class="form-control" id="edit-employeeID" name="employeeID" placeholder="EmployeeID" ng-model="EmployeeID" readonly>
+    </div>-->
+
+                        <div class="form-group">
+                            <label for="edit-employeeName">Name</label>
+                            <select id="updateEmployeeName" class="form-control" name="updateEmployeeName" ng-options="Employee.id as Employee.name for Employee in UpdateEmployeeList" ng-model="EmployeeID" disabled>
+                            </select>
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <label for="addRole">Role</label>
+                            <select id="addRole" class="form-control" name="addRole" ng-model="Role">
+                                <option ng-repeat="Role in RoleList ">{{Role.name}}</option>
+                            </select>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="add-status">
+                                Status:&nbsp;
+                                <input type="checkbox" ng-model="Status">&nbsp;Active
+                            </label>
+                        </div>
+
+                    </div>
+                    <div id="updatebutton">
+                        <hr />
+                        <button type="button" class="btn btn-default" ng-click="Close()">Close</button>
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

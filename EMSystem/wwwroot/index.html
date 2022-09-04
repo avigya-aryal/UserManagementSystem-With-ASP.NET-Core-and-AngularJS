@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head lang="en">
+	<meta charset="utf-8">
+	<title>AngularJS Routing</title>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.bundle.js"></script>
+
+
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28//angular-route.min.js"></script>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+	<script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+	<script type="text/javascript" src="View/Home/angular-chart.min.js"></script>
+	<script type="text/javascript" src="View/Home/angular-chart.js"></script>
+	<script type="text/javascript" src="View/Home/canvasjs.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js" integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angularjs-dropdown-multiselect/1.11.8/angularjs-dropdown-multiselect.min.js" integrity="sha512-n6LmUTom+Lm/XrRWRYJQ3nOWVUMOgnwnoPKLwAhG8dMhGwVvr0+e9gkrZg7ieX92CWmNVkCi0xK2/4OytIKMsQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<!-- inject local files here -->
+	<script type="text/javascript" src="/app/app.js"></script>
+
+	<script type="text/javascript" src="/app/Login/LoginController.js"></script>
+
+	<script type="text/javascript" src="/app/EmployeeSchedule/EmployeeScheduleController.js"></script>
+
+	<script type="text/javascript" src="/app/Employee/EmployeeController.js"></script>
+	<script type="text/javascript" src="/app/LeaveLog/LeaveLogController.js"></script>
+
+	<script type="text/javascript" src="/app/Contacts/ContactsController.js"></script>
+
+	<script type="text/javascript" src="/app/User/UserController.js"></script>
+
+	<script type="text/javascript" src="/app/UserRole/UserRoleController.js"></script>
+
+
+	<script type="text/javascript" src="/app/Project/ProjectController.js"></script>
+
+	<script type="text/javascript" src="/app/Department/DepartmentController.js"></script>
+	<style>
+		.topnav {
+			overflow: hidden;
+			background-color: #333;
+		}
+
+			.topnav a {
+				float: left;
+				color: #f2f2f2;
+				text-align: center;
+				padding: 14px 16px;
+				text-decoration: none;
+				font-size: 17px;
+			}
+
+				.topnav a:hover {
+					background-color: #ddd;
+					color: black;
+				}
+
+				.topnav a.active {
+					background-color: #04AA6D;
+					color: white;
+				}
+
+		.logo-image {
+			width: 26px;
+			height: 26px;
+			margin-left: 10px;
+		}
+	</style>
+
+</head>
+
+<body>
+	<div ng-app="mainApp">
+		<div class="topnav">
+			<!--<a href="#login">Login</a>-->
+			<a href="#home">Home</a>
+			<a href="#employee">Employee</a>
+			<a href="#leavelog">Leave Log</a>
+			<a href="#/employeeSchedule">Employee Schedule</a>
+			<a href="#/user">User</a>
+			<a href="#/userRole">User Role</a>
+			<a href="#/contacts">Contacts</a>
+			<a href="#/project">Project</a>
+			<a href="#/department">Department</a>
+			<a href="#/">
+				<div class="logo-image">
+				<img src="Images/logouticon.png" class="img-fluid">
+			</div>
+			</a>
+			 
+
+
+		</div>
+		<!-- ng-view -- main html template URL switcher -->
+		<div ng-view>
+
+		</div>
+	</div>
+</body>
+
+</html>
+

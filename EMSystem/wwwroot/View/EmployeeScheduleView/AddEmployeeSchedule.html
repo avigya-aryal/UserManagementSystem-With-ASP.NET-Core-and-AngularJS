@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html>
+<body>
+    <div ng-controller="EmployeeScheduleController">
+
+        <style>
+            #roundedcorner {
+                margin: auto;
+                border-radius: 25px;
+                border: 2px solid #000000;
+                padding: 20px;
+                width: 450px;
+                height: 400px;
+                
+             
+            }
+
+            #footer {
+                margin-top:30px;
+            }
+            label {
+                margin-left: 5px;
+            }
+            .form-control{
+                margin-left:5px;
+                width:300px;
+            }
+           
+            input:invalid {
+                border: red solid 2px;
+            }
+        </style>
+        <br />
+        <br />
+
+        <form id="roundedcorner" ng-submit="Add()">
+            <div class="modal-header">
+                <h4 class="modal-title" id="add-modal-label">Add new EmployeeSchedule</h4>
+            </div>
+
+            <div class="modal-body">
+
+                <div class="form-group">
+                    <label for="add-startHour">Start Hour</label>
+                    <input type="datetime-local" class="form-control" id="add-startHour" name="StartHour" placeholder="StartHour" ng-model="StartHour" required>
+                </div>
+               
+                <div class="form-group">
+                    <label for="add-endHour" >End Hour</label>
+                        <input type="datetime-local" class="form-control" id="add-endHour" name="EndHour" placeholder="EndHour" ng-model="EndHour" >
+                    
+                </div>
+              
+                <div id="footer">
+                    <hr />
+                    <button type="button" class="btn btn-default" ng-click="Close()">Cancel</button>
+                    <button type="submit" class="btn btn-primary" >Save Changes</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</body>
+</html>

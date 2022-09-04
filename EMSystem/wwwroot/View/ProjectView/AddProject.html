@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html>
+<body>
+    <div ng-controller="ProjectController">
+        
+        <style>
+            #roundedcorner {
+                margin: auto;
+                border-radius: 25px;
+                border: 2px solid #000000;
+                padding: 20px;
+                width: 450px;
+                height: 730px;
+            }
+
+            #footer {
+                margin-top: 30px;
+            }
+
+            input:invalid {
+                border: red solid 2px;
+            }
+            label{
+                margin-left:5px;
+            }
+            .form-control {
+                margin-left: 5px;
+                width:300px;
+            }
+           
+        </style>
+        <br />
+        <br />
+
+
+        <form id="roundedcorner" name="myForm" ng-submit="Add()">
+
+            <div class="modal-header">
+                <h4 class="modal-title" id="add-modal-label">Add new Project</h4>
+            </div>
+
+            <div class="modal-body">
+
+                <div class="form-group">
+                    <label for="add-projectName">Project Name </label>
+                        <input type="text" class="form-control" id="add-projectName" name="ProjectName" placeholder="ProjectName"
+                               ng-model="ProjectName" ng-pattern="validation" ng-minlength="5" ng-maxlength="50" required />
+                        <span class="alert-danger" ng-show="myForm.$ProjectName || (myForm.ProjectName.$dirty && myForm.ProjectName.$invalid)">
+                            <span ng-show="myForm.ProjectName.$error.pattern">Project Name must be in [A-Za-z], 5-50 characters !</span>
+                            <span ng-show="myForm.ProjectName.$error.default">default!</span>
+                        </span>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="addprojectmanager">Project Manager</label>
+                        <select id="addprojectmanager" class="form-control" name="addprojectmanager" ng-model="Project_Manager" required>
+                            <option ng-repeat="Project_Manager in ManagerList">{{Project_Manager.name}}</option>
+                        </select>
+                </div>
+        
+                <div class="form-group">
+                    <label for="addDescription"> Description</label>
+                        <textarea class="form-control" id="addDescription" name="Description" ng-model="Description" rows="4">
+                        </textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="add-startDate">Start Date</label>
+                        <input type="date" class="form-control" id="add-startDate" name="StartDate" ng-model="StartDate" required>
+                    </div>
+
+                <div class="form-group">
+                    <label for="add-endDate">End Date</label>
+                        <input type="date" class="form-control" id="add-endDate" name="EndDate" ng-model="EndDate">
+                    </div>
+            
+
+            <div class="form-group">
+                <label for="add-status">
+                    Status:&nbsp;
+                    <input type="checkbox" ng-model="Status">&nbsp;Active
+                </label>
+            </div>
+
+                <div id="footer">
+                   
+                    <button type="button" class="btn btn-default" ng-click="Close()">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</body>
+</html>

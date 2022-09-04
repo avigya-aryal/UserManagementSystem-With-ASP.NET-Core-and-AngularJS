@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+<body>
+    <div ng-controller="DepartmentController">
+
+        <style>
+            #roundedcorner {
+                margin: auto;
+                border-radius: 25px;
+                border: 2px solid #000000;
+                padding: 20px;
+                width: 450px;
+                height: 300px;
+            }
+
+            #footer {
+            }
+            label {
+                margin-left: 5px;
+            }
+            .form-control{
+                margin-left:5px;
+                width:300px;
+            }
+           
+            input:invalid {
+                border: red solid 2px;
+            }
+
+            label {
+                margin-left: 5px;
+            }
+        </style>
+        <br />
+        <br />
+
+        <form id="roundedcorner">
+            <div class="modal-header">
+                <h4 class="modal-title" id="add-modal-label">Add new Department</h4>
+            </div>
+
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="add-departmentname">Department Name</label>
+                    <input type="text" id="add-departmentname" class="form-control" name="add-departmentname" placeholder="DepartmentName"  ng-model="DepartmentName" required>
+               </div>
+                
+                <div id="footer">
+                    <hr />
+                    <button type="button" class="btn btn-default" ng-click="Close()">Cancel</button>
+                    <button type="submit" class="btn btn-primary" ng-click="Add()">Save Changes</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</body>
+</html>

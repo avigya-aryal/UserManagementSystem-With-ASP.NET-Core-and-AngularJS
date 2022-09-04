@@ -1,0 +1,122 @@
+﻿
+    <div ng-controller="EmployeeController as vm">
+
+        <style>
+            #roundedcorner {
+                margin: auto;
+                border-radius: 25px;
+                border: 2px solid #000000;
+                padding: 20px;
+                width: 450px;
+                height: 1030px;
+            }
+
+            #updatebutton {
+            }
+
+            label {
+                margin-left: 5px;
+            }
+
+            .form-control {
+                margin-left: 5px;
+                width: 300px;
+            }
+
+            #uploadImage {
+                border-radius: 6px;
+                background-color: rebeccapurple;
+                border: none;
+                font-size: 14px;
+                margin-top: 10px;
+            }
+
+            #imagecss {
+                width: 250px;
+                height: 170px;
+                margin-left: 13.5px;
+                margin-bottom: 15px;
+            }
+
+            #uploadcitizenship {
+                margin-top: 5px;
+                background-color: rebeccapurple;
+                border: none;
+                color: white;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+            }
+        </style>
+
+        <br />
+        <br />
+
+        <form id="roundedcorner" name="editEmployeeForm">
+
+            <div class="modal-header">
+                <h4 class="modal-title" id="edit-modal-label">Update Employee</h4>
+            </div>
+
+            <div class="modal-body">
+
+                <div class="form-group">
+                    <label for="displayEmployeeID">Employee ID</label>
+                    <input type="number" class="form-control" id="displayEmployeeID" name="employeeID" placeholder="EmployeeID" ng-model="EmployeeID" readonly>
+                </div>
+
+                <div class="form-group">
+                    <label for="edit-designation">Designation</label>
+                    <input type="text" id="edit-designation" class="form-control" name="Designation" placeholder="Designation" ng-model="Designation" ng-pattern="validation" ng-minlength="1" ng-maxlength="50" required><br />
+                    <span class="alter alert-warning" ng-show="editEmployeeForm.$Designation || (editEmployeeForm.Designation.$dirty && editEmployeeForm.Designation.$invalid)">
+                        <span ng-show="editEmployeeForm.Designation.$error.pattern">Designation must be in [A-Za-A], 1-50 characters.</span>
+                    </span>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="add-status">
+                        Status:
+                        <input type="checkbox" ng-model="Status"> Active
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <label for="addRequestedBy">Requested By</label>
+                    <select id="addRequestedBy" class="form-control" name="addRequestedBy" ng-options="Contact.id as Contact.name for Contact in UpdateContactList" ng-model="ContactID" disabled>
+                    </select>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="edit-createdBy">Joined Date</label>
+                    <input type="date" class="form-control" id="edit-joinedDate" name="joinedDate" placeholder="JoinedDate" ng-model="JoinedDate">
+                </div>
+
+                <div class="form-group">
+                    <label for="edit-modifiedTs">Left Date</label>
+                    <input type="text" class="form-control" id="edit-leftDate" name="leftDate" placeholder="LeftDate" ng-model="LeftDate">
+                </div>
+
+                <label id="image" for="add-file">Citizenship</label>
+                <div class=" image d-flex flex-column justify-content-left align-items-left">
+                    <img id="imagecss" ng-src="{{CitizenshipImage}}"  alt="Citizenship not found" class="img-fluid img-thumbnail" />
+                </div>
+
+                <div class="form-group">
+
+                    <label for="add-file">Image</label>
+                    <input class="form-control" type="file" name="file" accept="image/*" onchange="angular.element(this).scope().selectFileforUpload(this.files)" required />
+                    <button type="submit" id="uploadcitizenship" class="btn btn-primary" ng-click="uploadFiles()">Upload Citizenship</button>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" ng-click="Close()">Close</button>
+                    <button type="submit" class="btn btn-primary" ng-click="Update()">Update</button>
+                </div>
+
+            </div>
+
+        </form>
+    </div>

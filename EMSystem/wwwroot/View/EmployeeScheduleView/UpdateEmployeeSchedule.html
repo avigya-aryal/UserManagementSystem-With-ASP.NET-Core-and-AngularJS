@@ -1,0 +1,53 @@
+﻿<div ng-controller="EmployeeScheduleController as vm">
+    <style>
+        #roundedcorner {
+            margin: auto;
+            border-radius: 25px;
+            border: 2px solid #000000;
+            padding: 20px;
+            width: 450px;
+            height: 420px;
+            align-content:center;
+        }
+        label{
+            margin-left:5px;
+        }
+        .form-control{
+            margin-left:5px;
+            width:300px;
+        }
+
+        #updatebutton {
+        }
+    </style>
+    <div id="edit" aria-labelledby="edit" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" id="roundedcorner">
+                <form class="form-horizontal" id="edit-form" ng-submit="Update()">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="edit-modal-label">Update EmployeeSchedule</h4>
+                    </div>
+                    <div class="modal-body">
+                        
+                        <div class="form-group">
+                            <label for="edit-startHour">Start Hour</label>
+                                <input type="datetime-local" class="form-control" id="edit-startHour" name="startHour" placeholder="StartHour" ng-model="StartHour" >
+                            </div>
+
+                        <div class="form-group">
+                            <label for="edit-endHour">End Hour</label>
+                                <input type="datetime-local" class="form-control" id="edit-endHour" name="endHour" placeholder="EndHour" ng-model="EndHour">
+                            </div>
+
+
+                    </div>
+                    <div id="updatebutton">
+                        <hr />
+                        <button type="button" class="btn btn-default" ng-click="Close()">Close</button>
+                        <button type="submit" class="btn btn-primary" >Update</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

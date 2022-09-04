@@ -1,0 +1,211 @@
+﻿<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        #roundedcorner {
+            margin: auto;
+            border-radius: 25px;
+            border: 2px solid #000000;
+            padding: 20px;
+            width: 95%  ;
+            height: 98%;
+        }
+
+        #topbutton {
+            float:right;
+            margin-top:-60px;
+            
+        }
+
+
+        #employeesleavelog {
+            display: inline;
+            margin: auto;
+            font-family: Cambria;
+            font-size: 30px;
+            font-weight: bold;
+            text-align:center;
+        }
+
+        #cambriafont {
+            font-family: Cambria;
+            font-size: 19px;
+        }
+
+        #search_form {
+            float: left;
+            margin-top: 5px;
+            height: 250px;
+            width: 900px;
+            padding: 30px;
+            background-color: #ededed;
+        }
+
+        #searchinput {
+            align-items: center;
+        }
+
+        #searchinput1 {
+            display: flex;
+            align-items: center;
+           
+        }
+
+        #searchinput2 {
+            display: flex;
+            
+            align-items: center;
+        }
+        #searchinput3 {
+            display: flex;
+            align-items: center;
+        }
+        #searchlabel {
+          font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: 600;
+            font-size: 20px;
+            margin-top:10px;
+            color:gray;    
+        }
+
+        label{
+            margin-top:auto; 
+        }
+       
+       
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div ng-controller="LeaveLogController">
+        <script src="~/js/angular.js"></script>
+        <script src="../../app/LeaveLog/LeaveLogController.js"></script>
+        
+
+        <br />
+        <div class="table-responsive" id="roundedcorner">
+            <h5 id="employeesleavelog">LEAVE LOG</h5>
+            <h2 id="searchlabel">Search:</h2>
+            <div id="topbutton">
+                <a id="marginaddnewleavelog" href="#/AddLeaveLog" class="btn btn-primary btn-xs">Add New LeaveLog</a>
+                <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="Back()">Back To Home</button>
+            </div>
+
+            <!--search by-->
+            <form id="search_form">
+                <div id="searchinput">
+
+                    <div id="searchinput1">
+                        <label id="searchstartdate">Start Date:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input style="width:150px;" type="datetime-local" class="form-control" id="search-startDate" name="startDate" placeholder="Start Date"
+                               ng-model="searchtxt.startDate" />&nbsp;&nbsp;
+                        <label id="searchenddate">End Date:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input style="width:150px;" type="datetime-local" class="form-control" id="search-endDate" name="endDate" placeholder="End Date"
+                               ng-model="searchtxt.endDate" />&nbsp;&nbsp;
+
+                        <label id="searchleavetype">Leave Type:</label>&nbsp;
+                        <select style="width:175px;" class="form-control" id="searchLeaveType" name="LeaveType" ng-model="searchtxt.leaveType" required>
+                            <option value=""> Search leave type  </option>
+                            <option value="Full Leave">Full Leave</option>
+                            <option value="Half Leave">Half Leave</option>
+                            <option value="Combined Leave">Combined Leave</option>
+                        </select>
+
+                    </div>
+
+                    <br />
+
+                    <div id="searchinput2">
+                        <label id="searchstartdate">Leave Status:</label>&nbsp;
+                        <input style="width:150px;" type="text" id="addLeaveStatus" class="form-control" name="LeaveStatus" placeholder="LeaveStatus" ng-model="searchtxt.leaveStatus">
+                        &nbsp;&nbsp;
+
+                        <label id="searchstartdate">ApprovedBy:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input style="width:150px;" type="number" class="form-control" id="addApprovedBy" name="ApprovedBy" placeholder="ApprovedBy" ng-model="searchtxt.approvedBy">
+
+                    </div>
+                    <br />
+                    <div id="searchinput3">
+                        <label id="searchstartdate">Requested By:</label>&nbsp;
+                        <select class="form-control" style="width:145px;" id="searchRequestedBy" name="addRequestedBy" ng-model="searchtxt.employeeID" required>
+                            <option value="" disabled selected hidden>RequestedBy </option>
+                            <option ng-repeat="Employee in EmployeeList" value={{Employee.id}}>{{Employee.name}}</option>
+                        </select>  &nbsp;&nbsp;
+                        <label for="addApprovedDate">Approved Date:</label>&nbsp;
+                        <input style="width:150px;" type="date" class="form-control" id="addApprovedDate" name="ApprovedDate" ng-model="searchtxt.approvedDate">
+                    </div>
+                </div>
+            </form>
+
+
+
+
+            <br /><br />
+
+
+            <table id="mytable" class="table table-bordred table-striped">
+                <thead>
+                    <tr id="cambriafont">
+                     
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Leave Type</th>
+                        <th>Requested By</th>
+                        <th>Leave Status</th>
+                        <th>Notice Period</th>
+                        <th>Actions</th>
+
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr ng-repeat="item in ListOfLeaveLog | filter:searchtxt| pagination: currentPage * itemsPerPage | limitTo: itemsPerPage">
+                   
+                        <td>{{item.startDate| date : "MMM d, yyyy h:mma"}}</td>
+                        <td>{{item.endDate| date : "MMM d, yyyy h:mma"}}</td>
+                        <td>{{item.leaveType}}</td>
+                        <td>{{item.employeeName}}</td>
+                        <td>{{item.leaveStatus}}</td>
+                        <td>{{item.noticePeriod}}</td>
+
+                        <td>
+
+                            <a class="btn btn-primary btn-xs" href="#/EditLeaveLog/{{item.leaveLogID}}">
+                                Edit
+                            </a>
+
+                            <a class="btn btn-danger btn-xs" href="#/DeleteLeaveLog/{{item.leaveLogID}}">
+                                Delete
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <!--pagination-->
+            <div class="modal-footer">
+                <div class="pagination-div" ng-show="ListOfLeaveLog.length">
+                    <button type="button" ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1">PREV</button>
+                    <span>Page {{currentPage + 1}} of {{ pageCount() }}</span>
+                    <button type="button" ng-disabled="currentPage >= ListOfLeaveLog.length/itemsPerPage - 1" ng-click="currentPage = currentPage+1">NEXT</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
+
+<!--<th>Leave Reason</th>-->
+<!--<th>Approved By</th>
+<th>Approved Date</th>-->
+
+<!--<td>{{item.leaveReason}}</td>-->
+<!--<td>{{item.employeeID}}</td>-->
+<!--<td>{{item.approvedBy}}</td>
+<td>{{item.approvedDate | date : "dd.MM.y"}}</td>-->

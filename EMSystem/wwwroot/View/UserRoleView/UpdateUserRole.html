@@ -1,0 +1,46 @@
+﻿<div ng-controller="UserRoleController">
+    <style>
+        #roundedcorner {
+            margin: auto;
+            border-radius: 25px;
+            border: 2px solid #000000;
+            padding: 20px;
+            width: 450px;
+            height: 310px;
+        }
+        label{
+            margin-left:5px;
+        }
+        .form-control{
+            margin-left:5px;
+            width:300px;
+        }
+        #updatebutton {
+        }
+    </style>
+    <div id="edit" aria-labelledby="edit" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" id="roundedcorner">
+                <form class="form-horizontal" id="edit-form" ng-submit="Update()" name="myForm">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="edit-modal-label">Update User Role</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="edit-starthour">Role Type</label>
+                                <input type="text" class="form-control" id="edit-roleType" name="RoleType" placeholder="RoleType" ng-model="RoleType" ng-pattern="validationUserRole" required><br />
+                                <span class="alert-danger" ng-show="myForm.$RoleType || (myForm.RoleType.$dirty && myForm.RoleType.$invalid)">
+                                    <span ng-show="myForm.RoleType.$error.pattern">invalid!!</span>
+                                </span>
+                            </div>
+                    </div>
+                    <div id="updatebutton">
+                      
+                        <button type="button" class="btn btn-default" ng-click="Close()">Close</button>
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

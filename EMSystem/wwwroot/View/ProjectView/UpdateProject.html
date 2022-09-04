@@ -1,0 +1,81 @@
+﻿<div ng-controller="ProjectController">
+    <style>
+        #roundedcorner {
+            margin: auto;
+            border-radius: 25px;
+            border: 2px solid #000000;
+            padding: 20px;
+            width: 450px;
+            height: 800px;
+        }
+        label{
+            margin-left:5px;
+        }
+        .form-control{
+            margin-left:5px;
+            width:300px;
+        }
+
+        #updatebutton {
+        }
+    </style>
+    <div id="edit" aria-labelledby="edit" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" id="roundedcorner">
+                <form class="form-horizontal" id="edit-form" name="myForm" ng-submit="Update()">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="edit-modal-label">Update Project</h4>
+                    </div>
+
+                    <div class="modal-body">
+                    <div class="form-group">
+                        <label for="edit-projectName">Project Name</label>
+                            <input type="text" class="form-control" id="edit-projectName" name="projectName" placeholder="ProjectName" ng-model="ProjectName">
+                        </div>
+
+
+                    <div class="form-group">
+                        <label for="addprojectmanager">Project Manager</label>
+                            <select id="addprojectmanager" class="form-control" name="addprojectmanager" ng-model="Project_Manager">
+                                <option ng-repeat="Project_Manager in ManagerList">{{Project_Manager.name}}</option>
+                            </select>
+                        </div>
+
+
+                    <div class="form-group">
+                        <label for="addDescription"> Description</label>
+                            <textarea class="form-control" id="addDescription" name="Description" ng-model="Description" rows="4">
+                        </textarea>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="edit-startDate">Start Date</label>
+                            <input type="date" class="form-control" id="edit-startDate" name="startDate" ng-model="StartDate" />
+                        </div>
+
+                    <div class="form-group">
+                        <label for="add-endDate">End Date</label>
+                            <input type="date" class="form-control" id="add-endDate" name="EndDate" ng-model="EndDate">
+                        </div>
+
+
+                    <div class="form-group">
+                        <label>
+                            Status:&nbsp;
+                            <input type="checkbox" ng-model="Status">&nbsp;Active
+                        </label>
+                        </div>
+                        </div>
+
+                    <div id="updatebutton">
+                      
+                        <button type="button" class="btn btn-default" ng-click="Close()">Close</button>
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    </div>

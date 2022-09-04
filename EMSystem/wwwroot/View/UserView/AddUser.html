@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+
+<html>
+<body>
+    <div ng-controller="UserController">
+
+        <style>
+            #roundedcorner {
+                margin: auto;
+                border-radius: 25px;
+                border: 2px solid #000000;
+                padding: 20px;
+                width: 450px;
+                height: 450px;
+            }
+
+            #footer {
+            }
+            label {
+                margin-left: 5px;
+            }
+            .form-control{
+                margin-left:5px;
+                width:300px;
+            }
+            
+           
+            input:invalid {
+                border: red solid 2px;
+            }
+        </style>
+        <br />
+        <br />
+
+        <form id="roundedcorner">
+            <div class="modal-header">
+                <h4 class="modal-title" id="add-modal-label">Add new User</h4>
+            </div>
+
+            <div class="modal-body">
+   
+
+                <div class="form-group">
+                    <label for="addUser" >Employee Name</label>
+                        <select id="addEmployeeID" class="form-control" name="addEmployeeID" ng-model="EmployeeID"  required>
+                            <option ng-repeat="Employee in EmployeeList " value={{Employee.id}}>{{Employee.name}}</option>
+                        </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="addRole">Role</label>
+                        <select id="addRole" class="form-control" name="addRole" ng-model="Role" required>
+                            <option ng-repeat="Role in RoleList " >{{Role.name}}</option>
+                        </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="add-status">
+                        Status:&nbsp;
+                        <input type="checkbox" ng-model="Status">&nbsp;Active
+                    </label>
+                </div>
+
+                <div id="footer">
+                    <hr />
+                    <button type="button" class="btn btn-default" ng-click="Close()">Cancel</button>
+                    <button type="submit" class="btn btn-primary" ng-click="Add()">Save Changes</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</body>
+</html>

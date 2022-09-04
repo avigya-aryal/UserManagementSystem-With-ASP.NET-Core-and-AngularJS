@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+    <title>Home</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/canvasjs/1.7.0/canvasjs.min.js" integrity="sha512-FJ2OYvUIXUqCcPf1stu+oTBlhn54W0UisZB/TNrZaVMHHhYvLBV9jMbvJYtvDe5x/WVaoXZ6KB+Uqe5hT2vlyA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js" integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <style>
+        html {
+            background-color: white;
+        }
+
+        .dashboardtextcss {
+            font-family: Garamond;
+            margin-left: 35px;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        .usergreetcss {
+            font-family: 'Times New Roman';
+            margin-left: 37px;
+            font-size: 25px;
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+    <h1 class="dashboardtextcss">OVERVIEW DASHBOARD</h1>
+
+    <p class="usergreetcss">Welcome, user</p>
+
+    <div class="row">
+
+        <div class="col-ms-6">
+            <div class="card">
+                <div class="card-header">
+                    Bar Chart
+                </div>
+                <div class="card-body">
+                    <canvas class="my-4 h-25" id="bar"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-ms-6">
+            <div class="card">
+                <div class="card-header">
+                    Pie Chart
+                </div>
+                <div class="card-body">
+                    <canvas class="my-4 h-25" id="bar"></canvas>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+    <canvas id="aaa" width="400" height="400"></canvas>
+
+    <script type="text/javascript">
+        var xValues = ["Male", "Female", "Other"];
+        var yValues = [60, 39, 1];
+        var barColors = [
+            "#b91d47",
+            "#00aba9",
+            "#2b5797"
+        ];
+
+        new Chart("myChart", {
+            type: "doughnut",
+            data: {
+                labels: xValues,
+                datasets: [{
+                    backgroundColor: barColors,
+                    data: yValues
+                }]
+            },
+            options: {
+                title: {
+                    display: true,
+                    text: "World Wide Wine Production 2018"
+                }
+            }
+        });
+
+    </script>
+
+
+
+    <script type="text/javascript">
+        var ctx = document.getElementById("aaa");
+        var myChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ['OK', 'WARNING', 'CRITICAL', 'UNKNOWN'],
+                datasets: [{
+                    label: '# of Tomatoes',
+                    data: [12, 19, 3, 5],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.5)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255,99,132,1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: false,
+
+            }
+        });
+
+    </script>
+
+
+</body>
+
+</html>
